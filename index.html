@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smartphones Shopping Copilot - Wei Jian Poh</title>
+    <link rel="icon" type="jpg" href="{{ url_for('static', filename='icon.jpg') }}">
+    <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: url("{{ url_for('static', filename='bg.png') }}") no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        color: #fff;
+    }
+
+    h1 {
+        margin: 20px 0 5px 0;
+        color: black;
+        text-shadow: 1px 1px 3px rgba(255,255,255,0.5);
+    }
+
+    #description {
+        margin-bottom: 10px;
+        color: #333;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    #metrics-bar {
+        width: 90%;
+        max-width: 600px;
+        background: rgba(255,255,255,0.9);
+        color: #333;
+        border-radius: 10px;
+        padding: 8px 12px;
+        margin-bottom: 8px;
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    #tabs { display: flex; gap: 8px; margin-bottom: 10px; }
+    .tab-button {
+        padding: 8px 14px; border: none; border-radius: 8px;
+        background-color: #e0e0e0; color: #333; cursor: pointer; font-weight: 600;
+    }
+    .tab-button.active { background-color: #4a90e2; color: #fff; }
+
+    #chat-container {
+        width: 90%;
+        max-width: 600px;
+        height: 65%;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    #phones-container {
+        width: 90%;
+        max-width: 900px;
+        height: 65%;
+        background: rgba(255,255,255,0.95);
+        border-radius: 15px;
+        padding: 16px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        overflow: auto;
+        display: none;
+    }
+
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    thead { background: #f5f5f5; position: sticky; top: 0; }
+    th, td { padding: 8px 10px; border-bottom: 1px solid #eee; color: #333; text-align: left; }
+
+    .message {
+        padding: 12px 18px;
+        border-radius: 25px;
+        max-width: 75%;
+        word-wrap: break-word;
+        font-weight: 500;
+    }
+    .user-message { background-color: #4a90e2; color: white; align-self: flex-end; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .copilot-message { background-color: #f1f0f0; color: #333; align-self: flex-start; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+
+    #input-container { width: 90%; max-width: 600px; display: flex; margin-top: 15px; }
+    #user-input { flex: 1; padding: 12px 15px; border-radius: 25px; border: none; font-size: 16px; outline: none; }
+    #send-button { padding: 12px 25px; margin-left: 10px; border-radius: 25px; border: none; background-color: #1e90ff; color: white; font-size: 16px; cursor: pointer; font-weight: bold; transition: background-color 0.2s, transform 0.2s; }
+    #send-button:hover { background-color: #1c86ee; transform: scale(1.05); }
+    footer { margin-top: 10px; font-size: 14px; color: black; font-weight: bold; opacity: 0.85; }
+    </style>
+</head>
+<body>
+    <h1>Smartphones Shopping Copilot</h1>
+    <div id="description">Discover the latest smartphones available on the market as of October 2025.</div>
+
+    <div id="metrics-bar">
+        <div>Intent Accuracy: <span id="intent-acc">--%</span></div>
+        <div>Avg Latency: <span id="avg-lat">--</span>s</div>
+    </div>
+
+    <div id="tabs">
+        <button class="tab-button active" id="tab-chat" onclick="showTab('chat')">Chat</button>
+        <button class="tab-button" id="tab-phones" onclick="showTab('phones')">All Phones</button>
+    </div>
+
+    <div id="chat-container"></div>
+
+    <div id="phones-container">
+        <table id="phones-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Price (£)</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div id="input-container">
+        <input type="text" id="user-input" placeholder="Ask me anything...">
+        <button id="send-button" onclick="sendMessage()">Send</button>
+    </div>
+
+    <footer>Created by Wei Jian Poh</footer>
+
+    <script>
+        // Reset backend conversation on page load to avoid inheriting old context
+        fetch('/reset').catch(() => {});
+
+        let phonesLoaded = false;
+
+        function showTab(which) {
+            const chatBtn = document.getElementById('tab-chat');
+            const phonesBtn = document.getElementById('tab-phones');
+            const chat = document.getElementById('chat-container');
+            const phones = document.getElementById('phones-container');
+            if (which === 'chat') {
+                chatBtn.classList.add('active');
+                phonesBtn.classList.remove('active');
+                chat.style.display = 'flex';
+                phones.style.display = 'none';
+            } else {
+                chatBtn.classList.remove('active');
+                phonesBtn.classList.add('active');
+                chat.style.display = 'none';
+                phones.style.display = 'block';
+                if (!phonesLoaded) loadPhones();
+            }
+        }
+
+        function loadMetrics() {
+            fetch('/metrics').then(r => r.json()).then(data => {
+                if (data.intent_accuracy !== null && data.intent_accuracy !== undefined) {
+                    document.getElementById('intent-acc').textContent = `${data.intent_accuracy}%`;
+                }
+                if (data.avg_latency !== null && data.avg_latency !== undefined) {
+                    document.getElementById('avg-lat').textContent = data.avg_latency;
+                }
+            }).catch(() => {});
+        }
+
+        function loadPhones() {
+            fetch('/api/phones').then(r => r.json()).then(data => {
+                const tbody = document.querySelector('#phones-table tbody');
+                tbody.innerHTML = '';
+                (data.phones || []).forEach(p => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td>${p.name}</td><td>${p.brand}</td><td>${Number(p.price).toFixed(0)}</td><td>${Number(p.review).toFixed(1)}</td>`;
+                    tbody.appendChild(tr);
+                });
+                phonesLoaded = true;
+            }).catch(err => console.error(err));
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+
+            const chatContainer = document.getElementById('chat-container');
+
+            const userMessageElem = document.createElement('div');
+            userMessageElem.classList.add('message', 'user-message');
+            userMessageElem.textContent = userInput;
+            chatContainer.appendChild(userMessageElem);
+
+            document.getElementById('user-input').value = '';
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const renderMarkdownLite = (s) => {
+                    if (!s) return '';
+                    // Fix common encoding artifacts
+                    s = s.replace(/A�/g, '£');
+                    // Bold **text** -> <strong>
+                    s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1<\/strong>');
+                    return s;
+                };
+                const copilotMessageElem = document.createElement('div');
+                copilotMessageElem.classList.add('message', 'copilot-message');
+                const latencyNote = `<div style="font-size:12px;color:#888;margin-top:8px;">`+
+                  `process: ${data.process_latency}s • total: ${data.total_latency}s • avg: ${data.avg_latency}s`+
+                  `</div>`;
+                const html = renderMarkdownLite(data.response).replace(/\n/g, '<br>');
+                copilotMessageElem.innerHTML = html + latencyNote;
+                chatContainer.appendChild(copilotMessageElem);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+                // Update metrics bar with latest values
+                if (data.intent_accuracy !== null && data.intent_accuracy !== undefined) {
+                    document.getElementById('intent-acc').textContent = `${data.intent_accuracy}%`;
+                }
+                if (data.avg_latency !== null && data.avg_latency !== undefined) {
+                    document.getElementById('avg-lat').textContent = data.avg_latency;
+                }
+            })
+            .catch(err => console.error(err));
+        }
+
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        // Initial load
+        loadMetrics();
+    </script>
+</body>
+</html>
