@@ -1,0 +1,112 @@
+name,brand,price,review
+iPhone 17,Apple,799,4.7
+iPhone 17 Pro,Apple,1099,4.8
+iPhone 17 Pro Max,Apple,1199,4.8
+iPhone Air,Apple,999,4.6
+iPhone 16,Apple,799,4.7
+iPhone 16 Pro,Apple,999,4.8
+iPhone 16e,Apple,599,4.5
+iPhone 15,Apple,699,4.6
+iPhone 14,Apple,599,4.5
+ROG Phone 9 Pro,Asus,1099,4.6
+ROG Phone 9,Asus,999,4.5
+ROG Phone 8 Pro,Asus,1099,4.6
+ROG Phone 8,Asus,999,4.5
+Zenfone 12 Ultra,Asus,899,4.5
+Fairphone (Gen. 6),Fairphone,599,4.4
+Fairphone 5,Fairphone,699,4.3
+Pixel 10,Google,799,4.6
+Pixel 10 Pro,Google,999,4.6
+Pixel 10 Pro XL,Google,1099,4.7
+Pixel 10 Pro Fold,Google,1749,4.5
+Pixel 9,Google,699,4.4
+Pixel 9 Pro,Google,999,4.6
+Pixel 9a,Google,499,4.3
+Pixel 8,Google,599,4.4
+Pixel 8 Pro,Google,899,4.6
+Pixel 8a,Google,499,4.4
+HONOR Magic7 Pro,HONOR,999,4.6
+HONOR Magic V5,HONOR,1799,4.6
+HONOR 400,HONOR,599,4.5
+HONOR 200 Pro,HONOR,699,4.5
+HONOR 200,HONOR,449,4.4
+HONOR Magic V3,HONOR,1599,4.6
+HONOR X9b,HONOR,399,4.4
+HUAWEI P60 Pro,HUAWEI,999,4.5
+HUAWEI Mate X3,HUAWEI,1799,4.4
+HUAWEI Mate XT Ultimate Design,HUAWEI,2199,4.5
+HUAWEI P40 Pro,HUAWEI,699,4.4
+HUAWEI P30 Pro,HUAWEI,599,4.3
+Lenovo Legion Phone Duel 2,Lenovo,799,4.4
+Motorola Edge 60,Motorola,599,4.5
+Motorola Razr 60 Ultra,Motorola,999,4.6
+Motorola Razr 60,Motorola,799,4.6
+Motorola Edge 50 Pro,Motorola,699,4.5
+Motorola Moto G85,Motorola,249,4.4
+Moto G Power 2025,Motorola,299,4.3
+Moto G Stylus 5G 2025,Motorola,399,4.2
+Motorola ThinkPhone,Motorola,699,4.4
+Nokia XR21,Nokia,449,4.3
+Nokia G42 5G,Nokia,199,4.2
+Nokia G22,Nokia,149,4.1
+Nokia 2660 Flip,Nokia,89,4.3
+Nothing Phone 3,Nothing,799,4.5
+Nothing Phone (3a),Nothing,599,4.4
+Nothing Phone (2a),Nothing,449,4.4
+Nothing Phone 2,Nothing,599,4.5
+Nothing Phone (2),Nothing,599,4.5
+OnePlus 13,OnePlus,849,4.7
+OnePlus 13R,OnePlus,699,4.6
+OnePlus 12,OnePlus,799,4.6
+OnePlus Nord 5,OnePlus,499,4.5
+OnePlus Nord 4,OnePlus,449,4.5
+OnePlus Nord CE 4 Lite,OnePlus,299,4.4
+OPPO Find X8 Pro,OPPO,1099,4.6
+OPPO Reno13 Pro 5G,OPPO,649,4.5
+OPPO Reno13 5G,OPPO,499,4.5
+OPPO Reno12 F 5G,OPPO,449,4.4
+OPPO A5 Pro 5G,OPPO,299,4.3
+OPPO A5 5G,OPPO,249,4.3
+OPPO A60 5G,OPPO,199,4.2
+POCO F7 Pro,POCO,599,4.6
+POCO X7 Pro,POCO,449,4.5
+POCO F6,POCO,499,4.5
+POCO M6 Pro,POCO,249,4.3
+POCO C65,POCO,149,4.2
+Realme GT7 Pro,Realme,699,4.6
+Realme 14 Pro+,Realme,449,4.6
+Redmi Note 14 Pro+,Redmi,399,4.5
+Redmi Note 14 Pro,Redmi,349,4.4
+Redmi Note 14,Redmi,299,4.3
+Redmi 14,Redmi,199,4.2
+Redmi A3,Redmi,149,4.1
+Galaxy S25,Samsung,799,4.7
+Galaxy S25 Plus,Samsung,999,4.7
+Galaxy S25 Ultra,Samsung,1249,4.8
+Galaxy S25 FE,Samsung,699,4.6
+Galaxy S24,Samsung,799,4.7
+Galaxy S24 Plus,Samsung,999,4.7
+Galaxy S24 Ultra,Samsung,1249,4.8
+Galaxy S23,Samsung,599,4.7
+Galaxy Z Fold7,Samsung,1799,4.7
+Galaxy Z Flip7,Samsung,999,4.6
+Galaxy A56 5G,Samsung,449,4.5
+Galaxy A35 5G,Samsung,349,4.4
+Galaxy A26 5G,Samsung,299,4.3
+Galaxy A16 5G,Samsung,199,4.2
+Xperia 1 VII,Sony,1399,4.5
+Xperia 5 V,Sony,799,4.5
+Xperia 1 VI,Sony,1299,4.5
+Xperia 10 VI,Sony,349,4.3
+Xperia 10 VII,Sony,399,4.3
+Xperia 10 V,Sony,299,4.3
+Vivo X Fold 3 Pro,Vivo,1799,4.5
+Vivo V30 Pro,Vivo,599,4.4
+Vivo Y200t,Vivo,249,4.1
+Xiaomi 15,Xiaomi,799,4.6
+Xiaomi 15T Pro,Xiaomi,799,4.6
+Xiaomi 15T,Xiaomi,699,4.5
+Xiaomi 15 Ultra,Xiaomi,1299,4.7
+Xiaomi 14T Pro,Xiaomi,699,4.6
+Xiaomi 14T,Xiaomi,599,4.5
+Xiaomi 13 Pro,Xiaomi,599,4.5
