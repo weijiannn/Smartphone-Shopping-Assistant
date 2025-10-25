@@ -3,6 +3,7 @@
 This project applies machine learning and natural language processing to create an intelligent chatbot that helps users find the perfect smartphone. I built a Flask-based web application with intent classification, sentiment analysis, and recommendation algorithms to provide personalized shopping assistance.
 
 ⚙️ Tools
+
 Python, Flask, Pandas, Scikit-learn, HTML, CSS
 
 🚀 Highlights
