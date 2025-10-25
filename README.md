@@ -7,6 +7,7 @@ This project applies machine learning and natural language processing to create 
 Python, Flask, Pandas, Scikit-learn, HTML, CSS
 
 🚀 Highlights
+
 1) Intent Classification: Trained a machine learning model to understand user queries (search, recommend, compare, chitchat)
 2) Sentiment Analysis: Analyzed user sentiment to provide empathetic responses
 3) Smart Recommendations: Built filtering and recommendation algorithms based on user preferences (budget, brand, features)
@@ -15,6 +16,7 @@ Python, Flask, Pandas, Scikit-learn, HTML, CSS
 6) Performance Optimised: Achieved low-latency responses with model warm-up and efficient query processing
 
 📊 Features
+
 1) Natural Language Understanding: Processes casual user queries and extracts shopping intent
 2) Multi-criteria Filtering: Searches phones by brand, price range, and customer ratings
 3) Comparison Tool: Side-by-side comparison of multiple smartphone models
